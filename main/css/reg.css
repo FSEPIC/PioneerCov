@@ -1,0 +1,10 @@
+#logo{
+	transform: translate(875px,50px);
+	
+}
+#logof{
+	transform: translate(500px,200px);
+}
+.el-container{
+	text-align: center;
+}

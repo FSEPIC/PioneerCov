@@ -1,0 +1,70 @@
+#back{
+	
+}
+
+#container2{
+	left: -75px;
+}
+
+
+#logo{
+	transform: translate(875px,50px);
+	
+}
+#logof{
+	transform: translate(500px,200px);
+}
+
+#afish{
+	width: 1800px;
+	height: 800px;
+}
+
+h1.people{
+	text-align: center;
+}
+
+ #c1{
+	width: 0;
+	height: 0;
+	border: 50px solid;
+	border-color:  transparent red transparent transparent;
+	position: relative;
+ }
+ 
+ #c1::after{
+	content: '';
+	position: absolute;
+	right: -55px;
+	bottom: -50px;
+	border: 50px solid;
+	border-color: transparent white transparent transparent;
+ }
+ 
+ #c2{
+ 	width: 0;
+ 	    height: 0;
+ 	    border: 50px solid;
+ 	    border-color:  transparent transparent transparent red ;
+ 	    position: relative;
+ }
+ 
+ #c2::after{
+ 	content: '';
+ 	    position: absolute;
+ 	    left: -55px;
+ 	    bottom: -50px;
+ 	    border: 50px solid;
+ 	    border-color: transparent transparent transparent  white ;
+ }
+ 
+ .p1{
+	 height: 300px;
+	 width: 300px;
+ }
+ 
+  .login{     position: absolute;right:20px;top:5px;     font-weight: 600;     font-size: 14px; }
+ 
+ #redd{
+	 height: 1350px;
+ }

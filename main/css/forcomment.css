@@ -1,0 +1,65 @@
+    .rumor {
+		border-radius: 10px 10px 10px 10px;
+        overflow: display;
+		padding: 20px;
+        background-color: transparent;
+        box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.0);
+        -webkit-box-shadow: #d4d2d2 0px 0px 10px;
+        -moz-box-shadow: #d4d2d2 0px 0px 10px;
+    }
+	.hospital {
+	    border-radius: 10px 10px 10px 10px;
+	    overflow: display;							
+	    padding: 20px;
+	    background-color: transparent;
+	    box-shadow: 0 0 5px #000000;/* 框外阴影 */							
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	}
+	.comm {
+	    border-radius: 10px 10px 10px 10px;
+	    overflow: display;							
+	    padding: 20px;
+	    background-color: transparent;
+	    box-shadow: 0 0 5px #000000;/* 框外阴影 */							
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	}
+	.commbtn{
+		left: 100px;
+		width: 100px;
+		height: 60%;
+		background-color: #00a1d6;
+		box-shadow: 0px 0px 5px #000000;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 5px 5px 5px 5px;
+		color: #ffffff;
+		cursor: pointer;           
+	}		
+	.comminput{
+		overflow: hidden;
+		width: 100%;
+		height: 200%;
+		border: 0;
+		outline: 0;
+		border-radius: 5px 5px 5px 5px;
+		box-shadow: 0px 0px 5px #000000;
+		text-indent: 1em
+	}		
+	.commbox{
+		overflow: display;
+		width: 95%;
+		min-height:450px;
+		margin: 10px auto;
+		padding: 20px;
+		background-color: transparent;
+		box-shadow: 0 0 9px #000000;/* 框外阴影 */
+		border-radius: 10px 10px 10px 10px;
+		/* display: flex; */
+		flex-direction: column;
+		justify-content: space-between;
+	}
+						

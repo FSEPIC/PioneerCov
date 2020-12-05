@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--Author:陈威-->
+<!--CreateTime:2020-07-10-->
+<!--Update:2020-07-11-->
+<html style="height: 100%">
+	<head>
+		<meta charset="utf-8" />
+		<title>咸鱼先锋</title>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
+		<link rel="stylesheet" type="text/css" href="css/video.css"/>
+		<link rel="stylesheet" type="text/css" href="css/back.css"/>
+		<link rel="stylesheet" type="text/css" href="css/forcomment.css"/>
+	</head>
+	<body id="back" >
+		
+		<div id="app">
+			<el-tabs v-model="activeName">
+				<el-tab-pane label="推荐" name="first">
+					<div align="center">
+						<img id="backg" src="img/back.jpg" style="width: 609px;height: 700px;">
+					</div>
+					<h1 class="people">成员列表</h1>
+					<el-row :gutter="20" type="flex" justify="center">
+					  <el-col span="3.8">
+					    <el-card class="image1" :body-style="{ padding: '0px' }" shadow="hover">
+					      <img src="img/p3.jpg" class="image" style="width: 300px; height: 300px;">
+					      <div style="padding: 14px;" align="center">
+							  <div style="transform: translateY();">
+							  	徐明睿
+							  </div>
+							<br />
+					        <el-popover
+					            placement="top-start"
+					            title="徐明睿"
+					            width="200"
+					            trigger="hover"
+					            content="风趣幽默，喜欢吃尤其喜欢吃火锅"
+								offset="60">
+					            <el-button slot="reference" style="color: #3487fa">详细信息</el-button>
+					          </el-popover>
+					      </div>
+					    </el-card>
+					  </el-col>
+					  <el-col span="3.8">
+					    <el-card class="image2" :body-style="{ padding: '0px' }" shadow="hover">
+					      <img src="img/p1.jpg" class="image" style="width: 300px; height: 300px;">
+					      <div style="padding: 14px;" align="center">
+					  		<div style="transform: translateY();">
+					  		张文喆
+					  		</div>
+					  		<br/>
+					        <el-popover
+					            placement="top-start"
+					            title="张文喆"
+					            width="200"
+					            trigger="hover"
+					            content="诙谐幽默，善于组织，喜欢吃尤其喜欢吃披萨"
+					  			offset="60">
+					            <el-button slot="reference" style="color: #3487fa">详细信息</el-button>
+					          </el-popover>
+					      </div>
+					    </el-card>
+					  </el-col>
+					  <el-col span="3.8">
+					    <el-card class="image3" :body-style="{ padding: '0px' }" shadow="hover">
+					      <img src="img/p2.jpg" class="image" style="width: 300px; height: 300px;">
+					      <div style="padding: 14px;" align="center">
+							<div style="transform: translateY();">
+							闫顺兴
+					  		</div>
+					  		<br />
+					        <el-popover
+					            placement="top-start"
+					            title="闫顺兴"
+					            width="200"
+					            trigger="hover"
+					            content="乐观积极，喜欢吃尤其喜欢吃烧烤"
+					  								offset="60">
+					            <el-button slot="reference" style="color: #3487fa">详细信息</el-button>
+					          </el-popover>
+					      </div>
+					    </el-card>
+					  </el-col>
+					</el-row>
+					<br>
+					<img src="img/1.png" >
+					<el-row :gutter="20" type="flex" justify="center">
+					  <el-col span="3.8">
+					    <el-card class="image4" :body-style="{ padding: '0px' }" shadow="hover">
+					      <img src="img/p4.jpg" class="image" style="width: 300px; height: 300px;">
+					      <div style="padding: 14px;" align="center">
+							  <div style="transform: translateY();">
+							  	陈威
+							  </div>
+							<br />
+					        <el-popover
+					            placement="top-start"
+					            title="陈威"
+					            width="200"
+					            trigger="hover"
+					            content="有正能量，幽默风趣，喜欢吃尤其喜欢吃汉堡"
+								offset="60">
+					            <el-button slot="reference" style="color: #3487fa">详细信息</el-button>
+					          </el-popover>
+					      </div>
+					    </el-card>
+					  </el-col>
+					  <el-col span="3.8">
+					    <el-card class="image5" :body-style="{ padding: '0px' }" shadow="hover">
+					      <img src="img/p5.jpg" class="image" style="width: 300px; height: 300px;">
+					      <div style="padding: 14px;" align="center">
+					  		<div style="transform: translateY();">
+					  		邱景妍
+					  		</div>
+					  		<br/>
+					        <el-popover
+					            placement="top-start"
+					            title="邱景妍"
+					            width="200"
+					            trigger="hover"
+					            content="勤奋好学，喜欢喝尤其喜欢喝奶茶"
+					  			offset="60">
+					            <el-button slot="reference" style="color: #3487fa">详细信息</el-button>
+					          </el-popover>
+					      </div>
+					    </el-card>
+					  </el-col>
+					</el-row>
+					<br>
+					<img src="img/1.png" style="height: 100px;" >
+				</el-tab-pane>
+				<el-tab-pane label="国内疫情地图" name="second">
+					<h2 align="center">全国疫情数据地图</h2>
+					<div id="container" style="width: 1000px;height:700px; margin: 0 auto;"></div>
+				</el-tab-pane>
+				<el-tab-pane label="全球疫情地图" name="third">
+					<h2 align="center">全球疫情数据地图</h2>
+					<div id="container2" style="width: 1000px;height:700px; margin: 0 auto;"></div>
+				</el-tab-pane>
+				<el-tab-pane label="疫情变化趋势" name="fourth">
+					<h2 align="center">一周内全国疫情情况变化图</h2>
+					<div id="AWeek" style="width: 1000px;height:700px; margin: 0 auto;"></div>
+				</el-tab-pane>
+				<el-tab-pane label="谣言搜索" name="fifth">						<div id="app2">						<br>						<el-row>							<el-col :span="6" :offset="8"><el-input placeholder="请输入谣言关键词" id="city" v-model="word" clearable style="width: 100%"><!--搜索框设定--></el-input></el-col>							<el-col :span="6" ><el-button type="primary" icon="el-icon-search" @click="submit" >搜索</el-button></el-col><br>						</el-row>
+						<div id="yylogo">
+							<img src="img/IMG_0648.JPG" style="width: 1500px;" >
+						</div>						<div id="sb" style=" opacity: 0">							<el-main>								<template v-for="newslist in newslist">																<div class="rumor">																										日期：{{newslist.date}}<br>									新闻标题：{{newslist.title}}<br>									类型：<strong><font color="darkred">{{newslist.explain}}</font></strong><br>									描述：{{newslist.desc}}<br>									<el-link @click="openRumour(newslist.url)">来源：{{newslist.author}}</el-link><br>								</div><br>								</template>													</el-main>						</div>					</div>				</el-tab-pane>
+				<el-tab-pane label="发热门诊" name="tenth">						<br>						<el-row>							<el-col :span="6" :offset="8"><el-input placeholder="请输入所在地区"  v-model="city" clearable style="width: 100%"><!--搜索框设定--></el-input></el-col>							<el-col :span="6" ><el-button type="primary" icon="el-icon-search" @click="outPatient" >搜索</el-button></el-col><br>						</el-row>						<div id="hp" style=" opacity: 0">							<el-main>								<template v-for="hospital in hospital">								<div class="hospital">																										省份：{{hospital.Province}}<br>									城市：{{hospital.city}}<br>									医院：{{hospital.name}}<br>								</div>								<br>								</template>													</el-main>						</div>
+						<div id="red">
+							<img src="img/red.png" id="redd">
+						</div>				</el-tab-pane>
+			<el-tab-pane label="健康评估" name="sixth">
+				自我健康状况评估
+				<form id="one" method="post" name="one">
+				          <fieldset>
+				          <legend>健康状况:</legend>
+				           <p>体温：
+						   <input type="text" id="temperature" name="temperature" placeholder="必须输入">
+						   </p>
+				           <p>咳嗽：
+				            	<input type="radio" name="IsCough" value="1" >是
+				            	<input type="radio" name="IsCough" value="0" checked>否
+				           </p>
+				           <p>胸闷：
+				            	<input type="radio" name="IsSulking" value="1">是
+				            	<input type="radio" name="IsSulking" value="0" checked>否
+				            </p>
+				           <p>去过人群密集的地方：
+				           	<input type="radio" name="IsCrowd" value="1">是
+				            	<input type="radio" name="IsCrowd" value="0" checked>否
+				            </p>
+				           <p><button type="button" onclick="Function()">开始评估</button></p>
+				          </fieldset>
+				</form>
+				<p id="myPar">评估结果：</p>
+			</el-tab-pane>
+			<el-tab-pane label="抗疫那些事" name="seventh">				<div class="wrap flex-column">					<div class="box">						<!-- 视频在这里 -->						<video src="1.mp4" id="vid" width="99%" height="99%" controls><ideo>					</div>					<div class="send flex-row">						<!-- //new -->						<input type="text" class="con" placeholder="弹幕发送" onfocus="Enter()" onblur="lose()">						<div class="send-btn" onclick="send()">  发送  </div><br>						<div style="width: 100px;"></div>						<div class="send-btn" onclick="autoSend()">  悄悄话  </div>					</div>				</div>			</el-tab-pane>
+			<el-tab-pane label="评论区" name="eighth">				<div class="commbox">				<br/>				<el-row :gutter="20">					<el-col :span="15":offset="1">						<textarea id="send" type="text" class="comminput" placeholder="评论时注意文明用语" cols="60" rows="5"></textarea>					</el-col>				</el-row>				<br/>				<el-row :gutter="20">					<el-col :span="15":offset="1">						<div class="commbtn" onclick="getinput()">  发送  </div>					</el-col>				</el-row>				<br>				<el-row :gutter="20">					<el-col :span="20":offset="1">						<div id="i"></div>					</el-col>				</el-row>				</div>			</el-tab-pane>
+		</el-tabs>
+		<div class="login">				  <div v-if="id == ''" >				  <el-link href="login.html" :underline="false">				  <el-button type='primary' size='medium' round>				  用户登录				  </el-button>				  </el-link>				  </div>				  <div v-else>					  <el-button type='primary' size='medium' round @click="checkMyInfo()">						  个人信息						  </el-button>				  </div>		</el-link>			</div>
+		</div>
+		
+		<div class="waifu">
+		    <div class="waifu-tips"></div>
+		    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+		    <div class="waifu-tool">
+		        <span class="fui-home"></span>
+		        <span class="fui-chat"></span>
+		        <span class="fui-eye"></span>
+		        <span class="fui-user"></span>
+		        <span class="fui-photo"></span>
+		        <span class="fui-info-circle"></span>
+		        <span class="fui-cross"></span>
+		    </div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+	 function openFullScreen2(){
+		        const loading = this.$loading({
+		          lock: true,
+		          text: 'Loading',
+		          spinner: 'el-icon-loading',
+		          background: 'rgba(0, 0, 0, 0.7)'
+		        });
+		        setTimeout(() => {
+		          loading.close();
+		        }, 2000);
+		      }
+			  openFullScreen2();
+	</script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script type="text/javascript" src="js/constellation.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+	<script type="text/javascript" src="https://libs.baidu.com/jquery.js"></script>
+	<script type="text/javascript" src="js/world.js"></script>
+	<script src="assets/waifu-tips.js"></script>
+	<script src="assets/live2d.js"></script>
+	<script type="text/javascript">initModel("assets/")</script>
+	<script src="js/china.js"></script>
+	<script src="js/index.js" type="text/javascript"></script>
+	<script src="js/Datamap.js" type="text/javascript"></script>
+	<script src="js/AWeekData.js" type="text/javascript"></script>
+	<script src="js/diagnosis.js" type="text/javascript"></script>
+	<script src="js/WorldDataMap.js" type="text/javascript"></script>
+	<script src="js/comment.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+	<script src="js/BV.js" type="text/javascript"></script>
+	<script src="js/comment.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>登录界面</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/start.css"/>
+	</head>
+	<body>
+		<div id="app">
+		<template>
+			<el-container>
+			<el-header>
+				<el-row type="flex" justify="center">
+				  <el-col :span="2">
+					<img id="slogo" src="img/3.JPG" >
+				  </el-col>
+				</el-row>
+			<el-image
+			      style="width: 1000px; height: 100px"
+			      src="img/4.png"
+			      fit="contain"></el-image>
+				<!--<img id="logo" src="img/3.JPG" >-->
+				<!--<img id="logof" src="img/4.png" />-->
+				</el-header>
+				</el-container>
+				<el-form ref="form" :rules="rules" :model="form" label-width="80px" style="width:400px;top:60%;left:50%;margin:-200px 0 0 -200px;position: absolute;"  >
+				  <el-form-item label="用户ID" prop="ID">
+				    <el-input v-model="form.ID" placeholder="6位数字" id="ID"></el-input>
+				  </el-form-item>
+				  <el-form-item label="密码" prop="password" >
+				    <el-input v-model="form.password" placeholder="6-16位字母/数字" id = "password" show-password></el-input>
+				  </el-form-item>
+				  <el-form-item>
+				    <el-button type="primary" @click="login()">登录</el-button>
+				    <el-button type="primary" @click="jumpToRegister">点此注册</el-button>
+				  </el-form-item>
+				</el-form>
+		</template>
+		</div>
+		
+	</body>
+	<link rel="stylesheet" type="text/css" href="css/back.css"/>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script type="text/javascript">
+		var LoginMain = {
+		    data() {
+		      return {
+				form: {
+				          password: '',
+						  ID:'',
+				        },
+				rules:{
+					ID:[
+						{ required: true, message: '请输入用户ID', trigger: 'blur' },
+						 { min: 6, max: 6, message: '长度为6位', trigger: 'blur' }
+					],
+					password:[
+							{ required: true, message: '请输入密码', trigger: 'blur' },
+							 { min: 6, max: 16, message: '长度在 6 到 16 位', trigger: 'blur' }
+							 ],
+					
+				},
+				
+		      };
+		    },
+			created:function(){
+						 
+						 var url = location.href;//获取用户ID
+						 var reg = new RegExp("(^|\\?|&)"+ "ID" +"=([^&]*)(\\s|&|$)", "i");
+						 if (reg.test(url)) this.form.ID=unescape(RegExp.$2.replace(/\+/g, " "));
+						 console.log(this.form.ID);
+			},
+			
+		    methods: {
+				
+			  login() {
+				  if(this.form.ID.length !=6 || this.form.password.length<6|| this.form.password.length>16){
+					this.$message('用户ID或密码格式错误！');  
+				  }
+				  else{
+			          console.log('login!');
+			  			let param = new URLSearchParams();//使用URLSearchParams传参数
+			  			param.append("id", this.form.ID);
+			  			param.append("password", this.form.password);
+			  			axios.post('http://121.199.63.142:8090/login',param)
+			  					.then( (response)=>{
+			  					console.log(response);
+			  						if(response.data.isOK == 0){
+			  							this.$notify.error({
+			  							          title: '登录失败！',
+			  							          message: '用户ID或密码错误！',
+			  							        });
+			  							return;
+			  						  }
+			  						  else{
+			  							this.jumpToIndex();
+										}
+			  					    })
+			  					    .catch(function (error) {
+			  					      console.log(error);
+			  					    });
+									}
+			  						
+			        },
+					jumpToRegister(){
+						window.location.href = 'register.html';
+						
+					},
+					jumpToIndex(){
+						window.location.href = 'index.html?id='+this.form.ID;
+					}
+				
+		    }
+		  };
+		var Ctor = Vue.extend(LoginMain)
+		new Ctor().$mount('#app')
+		
+	</script>
+	
+</html>

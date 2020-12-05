@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/reg.css"/>
+	</head>
+	<body>
+		<div id="app">
+		<template>
+			<el-container>
+			<el-header>
+			<el-image
+			      style="width: 100px; height: 100px"
+			      src="img/3.JPG"
+			      fit="fill"></el-image><br>
+			<el-image
+			      style="width: 1000px; height: 100px"
+			      src="img/4.png"
+			      fit="contain"></el-image>
+				<!--<img id="logo" src="img/3.JPG" >-->
+				<!--<img id="logof" src="img/4.png" />-->
+				</el-header>
+				</el-container>
+		<el-form ref="form" :rules="rules" :model="form" label-width="80px" style="width:400px;top:60%;left:50%;margin:-200px 0 0 -200px;position: absolute;"  >	  
+				<el-form-item label="用户名" prop="uname">
+				<el-input v-model="form.uname" placeholder="2-10位字母/数字/汉字" id="username"></el-input>
+				</el-form-item>
+				<el-form-item label="性别" prop="sex">
+				<el-select v-model="form.sex" placeholder="请选择" id="sex">
+				  <el-option label="男" value = "男"></el-option>
+				  <el-option label="女" value="女"></el-option>
+				</el-select>
+				</el-form-item>
+				<el-form-item label="出生日期" prop="birth">
+					<el-date-picker
+					v-model="form.birth"
+					type="date"
+					placeholder="选择日期时间"
+					format="yyyy 年 MM 月 dd 日"
+					value-format="yyyy-MM-dd">
+				</el-date-picker>
+				</el-form-item>
+				<el-form-item label="密码" prop="password" >
+				<el-input v-model="form.password" placeholder="6-16位字母/数字" id = "password" show-password></el-input>
+				</el-form-item>
+				<el-form-item label="确认密码" prop="passwordConfirm" >
+				<el-input v-model="form.passwordConfirm" placeholder="再次输入密码" id = "passwordConfirm" show-password></el-input>
+				</el-form-item>
+				<el-form-item>
+				<el-button type="primary" @click="register">注册</el-button>
+				<el-button @click="jumpToLogin" >返回登录界面</el-button>
+				</el-form-item>
+				</el-form>
+				<el-dialog
+				  title="注册成功!"
+				  :visible.sync="dialogVisible"
+				  width="30%">
+				  <span>用户ID:{{this.userid}}</span><br>
+				  <span>请仔细记住用户ID!</span>
+				  <span slot="footer" class="dialog-footer">
+				    <el-button type="primary" @click="jumpToLogin()">确 定</el-button>
+				  </span>
+				</el-dialog>
+		</template>
+		</div>
+		
+	</body>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script type="text/javascript">
+		var LoginMain = {
+		    data() {
+		      return {
+				  userid:'',
+				  dialogVisible:false,
+				form: {
+						  birth:'',
+				          uname: '',
+						  password:'',
+						  passwordConfirm:'',
+						  sex:'',
+				        },
+				rules:{
+					sex:[{   required: true, message: '请选择性别',trigger:'change'}],
+					birth:[{ required: true, message: '请选择您的生日', trigger: 'change' }],
+					uname:[{ required: true, message: '请输入用户名', trigger: 'blur' },
+							 { min: 2, max: 10, message: '长度在 2 到 10 位', trigger: 'blur' }
+							 ],
+					password:[
+							{ required: true, message: '请输入密码', trigger: 'blur' },
+							 { min: 6, max: 16, message: '长度在 6 到 16 位', trigger: 'blur' }
+							 ],
+					passwordConfirm:[
+							{ required: true, message: '请再次输入密码', trigger: 'blur' },
+							 ]							 
+					
+				},
+				
+		      };
+		    },
+			
+		    methods: {
+				
+				register(){
+					console.log(this.form.uname);
+					console.log(this.form.birth);
+					console.log(this.form.password);
+					console.log(this.form.sex);
+					if(this.form.uname.length<2 ||this.form.uname.length>10){
+						this.$notify.warning({
+						          title: '注册失败！',
+						          message: '用户名格式错误！',
+						        });
+					}
+					else if(this.form.sex.length != 1){
+						this.$notify.warning({
+							title:'注册失败！',
+							message:'请输入性别！',
+						});
+					}
+					else if(this.form.birth.length != 10){
+						this.$notify.warning({
+						          title: '注册失败！',
+						          message: '请输入出生日期！',
+						        });
+					}
+					else if(this.form.password.length<6 ||this.form.password.length>16){
+						this.$notify.warning({
+						          title: '注册失败！',
+						          message: '密码格式错误！',
+						        });
+					}
+					else if(this.form.password != this.form.passwordConfirm){
+						this.$notify.warning({
+						          title: '注册失败！',
+						          message: '请检查两次密码是否一致！',
+						        });
+					}
+					else{
+					console.log('register!');
+					let param = new URLSearchParams();//使用URLSearchParams传参数
+					param.append("uname", this.form.uname);
+					param.append("birth", this.form.birth);
+					param.append("password",this.form.password);
+					param.append("sex",this.form.sex);
+					axios.post('http://121.199.63.142:8090/register', param)
+				  .then((response)=> {
+							if(response.data.isOK == 1){
+								console.log(response.data.isOK);
+								this.dialogVisible = true;
+								console.log(response.data.userid);
+								this.userid = response.data.userid;
+								this.dialogVisible = true;
+								}
+							else{
+							console.log(response.data.isOK);
+							this.$notify.error({
+							          title: '注册失败！',
+							          message: '服务器繁忙，请稍后重试！',
+							        });
+									}
+					  })
+					  .catch(function (error) {
+					    console.log(error);
+					  });
+					  
+				}
+				},
+				jumpToLogin(){
+					window.location.href = 'login.html?ID='+this.userid;
+				}
+		    }
+		  };
+		var Ctor = Vue.extend(LoginMain)
+		new Ctor().$mount('#app')
+		
+	</script>
+	
+</html>

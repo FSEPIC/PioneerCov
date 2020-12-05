@@ -1,0 +1,10 @@
+ .el-tabs{
+     position: absolute;left:0px;top:50px;
+	 font-weight: 600;
+	 font-size: 14px;
+ }
+ .el-page-header{
+	 position: absolute;left:21px;top:10px;
+	 font-weight: 600;
+     font-size: 14px;
+ }
